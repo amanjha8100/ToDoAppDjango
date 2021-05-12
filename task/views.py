@@ -54,14 +54,17 @@ def add(request):
     # obj.description = request.POST.get('msg','Default')
     # obj.status = False
     # obj.save()
-    form = AddForm(request.POST)
-    obj = toDo()
-    # title = request.POST['title']
-    # desc = request.POST['msg']
-    if form.is_valid():
-        return redirect('index')
-    else:
-        return render(request,'task/add.html',{'form':form})
+    form = AddForm()
+    if request.method == "POST":
+
+        form = AddForm(request.POST)
+        obj = toDo()
+        # title = request.POST['title']
+        # desc = request.POST['msg']
+        if form.is_valid():
+            return redirect('index')
+        else:
+            return render(request,'task/add.html',{'form':form})
     
 
     return render(request,'task/add.html',{'form':form})
