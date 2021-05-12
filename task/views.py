@@ -93,17 +93,34 @@ def edit(request, pk):
             obj.title = form.cleaned_data['title']
             obj.description = form.cleaned_data['msg']
             obj.save()
-            return redirect('detail',pk=pk)
+            return redirect('index')
         else:
             return render(request,'task/edit.html',{'form':form})
             
     return render(request, 'task/edit.html',{'form':form})
     
 
+@login_required(login_url='/login/')
+def dele(request,pk):
+    obj = toDo.objects.filter(user=request.user).get(pk=pk).delete()
+    return redirect('index')
+
+
 class TaskList(ListView):
     model = toDo
     template_name = 'task/index.html'
     context_object_name = 'tasks'
+
+    def get_context_data(self, *args,**kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        query = self.request.GET.get('search-area') or ''
+        if query:
+            #__icontains checks whether it is there in the queryset and startswith checks whether it startswith
+            context['tasks'] = context['tasks'].filter(title__startswith=query)
+        context['query'] = query
+        return context
+
 
 class TaskDetail(DetailView):
     model = toDo

@@ -2,16 +2,35 @@
 
 
 {% block content %}
+<div class="container pt-4">
+    <form method="GET">
+        <div class="input-group">
+            <div class="form-outline">
+              <input type="text" name="search-area" value="{{query}}" id="form1" class="form-control" />
+            </div>
+            <div class="form-outline">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                  </button>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
 <table>
     <tr>
         <th>Item</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
     {% for task in tasks %}
     <tr>
         <td>{{task.title}}</td>
-        <td><a href="{% url 'detail' task.id %}" class="btn btn-primary btn-black">View</a></td>
+        <td><a href="{% url 'detail' task.id %}" class="btn btn-success btn-black">View</a></td>
+        <td><a href="{% url 'edit' task.id %}" class="btn btn-primary">Edit</a></td>
+        <td><a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a></td>
     </tr>
     {% empty %}
     <h3>No items in list</h3>
