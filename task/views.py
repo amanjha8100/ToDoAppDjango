@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
+from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from . forms import CreateUserForm
 from django.contrib import messages
@@ -92,7 +93,7 @@ def edit(request, pk):
             obj.title = form.cleaned_data['title']
             obj.description = form.cleaned_data['msg']
             obj.save()
-            return redirect('/detail/')
+            return redirect('detail',pk=pk)
         else:
             return render(request,'task/edit.html',{'form':form})
             
