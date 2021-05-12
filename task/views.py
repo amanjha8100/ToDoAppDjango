@@ -62,6 +62,13 @@ def add(request):
         # title = request.POST['title']
         # desc = request.POST['msg']
         if form.is_valid():
+            user = request.user
+            print(user)
+            obj.title = form.cleaned_data['title']
+            obj.description = form.cleaned_data['msg']
+            obj.status = False
+            obj.user = user
+            obj.save()
             return redirect('index')
         else:
             return render(request,'task/add.html',{'form':form})
@@ -69,6 +76,28 @@ def add(request):
 
     return render(request,'task/add.html',{'form':form})
 
+@login_required(login_url='/login/')
+def edit(request, pk):
+    obj = toDo.objects.filter(user=request.user).get(pk=pk)
+    print(obj.description)
+    form = AddForm()
+    dict_data = {
+        'title':obj.title,
+        'msg':obj.description,
+    }
+    form = AddForm(dict_data)
+    if request.method == "POST":
+        form = AddForm(request.POST)
+        if form.is_valid():
+            obj.title = form.cleaned_data['title']
+            obj.description = form.cleaned_data['msg']
+            obj.save()
+            return redirect('/detail/')
+        else:
+            return render(request,'task/edit.html',{'form':form})
+            
+    return render(request, 'task/edit.html',{'form':form})
+    
 
 class TaskList(ListView):
     model = toDo
