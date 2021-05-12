@@ -3,6 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from . forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from .models import toDo
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
+from . forms import AddForm
 # Create your views here.
 
 
@@ -38,6 +45,38 @@ def logoutUser(request):
     return redirect('login')
 
 
-def index(request):
+# def index(request):
+#     return render(request,"task/index.html")
+@login_required(login_url='/login/')
+def add(request):
+    # obj = toDo()
+    # obj.title = request.POST.get('title','Default')
+    # obj.description = request.POST.get('msg','Default')
+    # obj.status = False
+    # obj.save()
+    form = AddForm(request.POST)
+    obj = toDo()
+    # title = request.POST['title']
+    # desc = request.POST['msg']
+    if form.is_valid():
+        return redirect('index')
+    else:
+        return render(request,'task/add.html',{'form':form})
     
-    return render(request,"task/index.html")
+
+    return render(request,'task/add.html',{'form':form})
+
+
+class TaskList(ListView):
+    model = toDo
+    template_name = 'task/index.html'
+    context_object_name = 'tasks'
+
+class TaskDetail(DetailView):
+    model = toDo
+    template_name = "task/taskdetail.html"
+    context_object_name = 'task'
+
+class TaskEdit(CreateView):
+    pass
+    

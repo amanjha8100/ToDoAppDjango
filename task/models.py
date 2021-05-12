@@ -6,6 +6,11 @@ class toDo(models.Model):
     user = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
     description = models.TextField(max_length=500)
-    status = models.BooleanField(default=True)
+    status = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['status']
