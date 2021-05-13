@@ -1,5 +1,36 @@
 {% extends 'main.html' %}
 
+{% block css %}
+<style>
+    @media (min-width:991.98px){
+        .desktop{
+            padding-top: 100px;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Task:{{task}}</h1>
+<!-- <h1>Task:{{task}}</h1> -->
+
+<section class="ftco-section bg-light" id="cards">
+    <div class="container card-styles">
+        <div class="row desktop">
+            <div class="col">
+                <div class="card">
+                    <div class="icon-wrap px-4 pt-4">
+                        <div class="icon d-flex justify-content-center align-items-center bg-info rounded-circle">
+                            <span class="ion-logo-ionic text-light"></span>
+                        </div>
+                    </div>
+                  <div class="card-body pb-5 px-4">
+                    <h5 class="card-title">{{task.title}}</h5>
+                    <p class="card-text">{{task.description}}</p>
+                    <a href="#" class="btn btn-info">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
