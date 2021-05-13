@@ -1,23 +1,48 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 
+{% block css %}
+<style>
+    /* Styles for wrapping the search box */
+
+.main {
+    width: 80%;
+    margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="container pt-4">
+<br>
+<div class="main">
     <form method="GET">
         <div class="input-group">
-            <div class="form-outline">
-              <input type="text" name="search-area" value="{{query}}" id="form1" class="form-control" />
+            <input type="text" class="form-control" name="search-area" value="{{query}}" placeholder="Search this blog">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
             </div>
-            <div class="form-outline">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-search"></i>
-                  </button>
-            </div>
-            
-        </div>
+          </div>
     </form>
 </div>
-
 <table>
     <tr>
         <th>Item</th>
@@ -36,4 +61,38 @@
     <h3>No items in list</h3>
     {% endfor %}
 </table>
+
+<section class="ftco-section ftco-section-2 bg-light" id="javascriptsComponents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="heading-section mb-4 text-center">
+                    To Do Items
+                </h2>
+                <div id="accordion" class="myaccordion w-100 text-center py-4 px-1 px-md-4">
+                    {% for task in tasks %}
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h2 class="mb-0">
+                        <button class="d-flex align-items-center justify-content-between btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <a href="#" style="color: #000; text-decoration: none;">{{task.title}}</a>
+                          <i class="fa" aria-hidden="true"></i>
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body text-left">
+                          <p>{{task.description}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
