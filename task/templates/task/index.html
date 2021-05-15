@@ -43,7 +43,7 @@
                 <div class="main">
                     <form method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search-area" value="{{query}}" placeholder="Search this blog">
+                            <input type="text" class="form-control" name="search-area" value="{{query}}" placeholder="Search...">
                             <div class="input-group-append">
                               <button class="btn btn-secondary" type="button">
                                 <i class="fa fa-search"></i>
@@ -53,12 +53,12 @@
                     </form>
                 </div>
                 {% for task in tasks %}
-                <div id="accordion" class="myaccordion w-100 text-center py-4 px-1 px-md-4">
+                <div id="accordion{{forloop.counter}}" class="myaccordion w-100 text-center py-4 px-1 px-md-4">
                     
                   <div class="card">
-                    <div class="card-header" id="headingOne">
+                    <div class="card-header" id="heading{{forloop.counter}}">
                       <h2 class="mb-0">
-                        <button class="d-flex flex-gap align-items-center justify-content-between btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button {% if forloop.first %}class="d-flex flex-gap align-items-center justify-content-between btn btn-link"{% else %}class="d-flex flex-gap align-items-center justify-content-between btn btn-link collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="true" aria-controls="collapse{{forloop.counter}}">
                           <a href="{% url 'detail' task.id %}" style="color: #000; text-decoration: none;" class="mr-auto">{{task.title}}</a>
                           {% if task.status %}
                           <span class="badge badge-pill badge-danger p-2 px-3">Completed</span>
@@ -69,7 +69,7 @@
                         </button>
                       </h2>
                     </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapse{{forloop.counter}}" {% if forloop.first %}class="collapse show"{% else %}class="collapse"{% endif %} aria-labelledby="heading{{forloop.counter}}" data-parent="#accordion{{forloop.counter}}">
                       <div class="card-body text-left">
                           <p>{{task.description}}</p>
                       </div>
