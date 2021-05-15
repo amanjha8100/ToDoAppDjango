@@ -93,7 +93,7 @@ def edit(request, pk):
             obj.title = form.cleaned_data['title']
             obj.description = form.cleaned_data['msg']
             obj.save()
-            return redirect('index')
+            return redirect('detail',pk=pk)
         else:
             return render(request,'task/edit.html',{'form':form})
             

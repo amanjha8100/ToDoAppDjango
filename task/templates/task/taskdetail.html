@@ -22,10 +22,14 @@
                         <!-- <div class="icon d-flex justify-content-center align-items-center bg-info rounded-circle">
                             <span class="ion-logo-ionic text-light"></span>
                         </div> -->
-                        <span class="badge badge-pill badge-success p-2 px-3">Success</span>
+                        {% if task.status %}
+                        <span class="badge badge-pill badge-danger p-2 px-3 align-self-start">Completed</span>
+                        {% else %}
+                        <span class="badge badge-pill badge-success p-2 px-3 align-self-start">Working</span>
+                        {% endif %}
                         <div class="d-flex justify-content-center align-items-center">
-                            <a href="#" class="btn btn-info btn-fab btn-round"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a href="#" class="btn btn-danger btn-fab btn-round"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a href="{% url 'edit' task.id %}" class="btn btn-info btn-fab btn-round align-self"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a href="{% url 'delete' task.id %}" class="btn btn-danger btn-fab btn-round"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </div>
                     </div>
                   <div class="card-body pb-5 px-4">
@@ -37,30 +41,8 @@
         </div>
     </div>
 </section>
-<div class="dropdown-show">
-    <!-- <a class="btn btn-light btn-fab btn-round" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a> -->
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-        <a href="javascript:void(0);" class="icon" onclick="geeksforgeeks()">
-            <!-- Chnaging the default icon with toggle-->
-            <i onclick="myFunction(this)" class="fa fa-plus-circle"></i>
-        </a>
-    </button>
-
-
-    <div class="dropdown-menu d-flex flex-column" aria-labelledby="dropdownMenuLink">
-        <a href="#" class="dropdown-item btn btn-info btn-fab btn-round"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-        <a href="#" class="dropdown-item btn btn-danger btn-fab btn-round"><i class="fa fa-trash" aria-hidden="true"></i></a>
-    </div>
-</div>
 {% endblock %}
 
 {% block javascript %}
-<script> 
-          
-    // Function to toggle the plus menu into minus 
-    function myFunction(x) { 
-        x.classList.toggle("fa-minus-circle"); 
-    } 
-</script> 
 {% endblock %}
 

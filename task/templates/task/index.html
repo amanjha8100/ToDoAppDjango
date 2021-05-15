@@ -30,26 +30,6 @@
 {% endblock %}
 
 {% block content %}
-
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td>{{task.title}}</td>
-        <td><a href="{% url 'detail' task.id %}" class="btn btn-success btn-black">View</a></td>
-        <td><a href="{% url 'edit' task.id %}" class="btn btn-primary">Edit</a></td>
-        <td><a href="{% url 'delete' task.id %}" class="btn btn-danger">Delete</a></td>
-    </tr>
-    {% empty %}
-    <h3>No items in list</h3>
-    {% endfor %}
-</table>
-
 <section class="ftco-section ftco-section-2 bg-light" id="javascriptsComponents">
     <div class="container">
         <div class="row">
@@ -88,6 +68,8 @@
                     </div>
                   </div> 
                 </div>
+                {% empty %}
+                <h4 class="text-center">No items in the list, try adding them.</h4>
                 {% endfor %}
             </div>
         </div>
