@@ -11,6 +11,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
 from . forms import AddForm,EditForm
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -112,6 +113,10 @@ class TaskList(ListView):
     model = toDo
     template_name = 'task/index.html'
     context_object_name = 'tasks'
+
+    def get_queryset(self):
+        qs = toDo.objects.filter(user=self.request.user)
+        return qs
 
     def get_context_data(self, *args,**kwargs):
         context = super().get_context_data(**kwargs)
