@@ -10,7 +10,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
-from . forms import AddForm
+from . forms import AddForm,EditForm
 # Create your views here.
 
 
@@ -81,17 +81,19 @@ def add(request):
 def edit(request, pk):
     obj = toDo.objects.filter(user=request.user).get(pk=pk)
     print(obj.description)
-    form = AddForm()
+    form = EditForm()
     dict_data = {
         'title':obj.title,
         'msg':obj.description,
+        'status':obj.status,
     }
-    form = AddForm(dict_data)
+    form = EditForm(dict_data)
     if request.method == "POST":
-        form = AddForm(request.POST)
+        form = EditForm(request.POST)
         if form.is_valid():
             obj.title = form.cleaned_data['title']
             obj.description = form.cleaned_data['msg']
+            obj.status = form.cleaned_data['status']
             obj.save()
             return redirect('detail',pk=pk)
         else:

@@ -7,6 +7,9 @@
             padding-top: 100px;
         }
     }
+    .flex-gap{
+        gap:10px;
+    }
 </style>
 {% endblock %}
 
@@ -27,7 +30,7 @@
                         {% else %}
                         <span class="badge badge-pill badge-success p-2 px-3 align-self-start">Working</span>
                         {% endif %}
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex flex-gap justify-content-center align-items-center">
                             <a href="{% url 'edit' task.id %}" class="btn btn-info btn-fab btn-round align-self"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <a href="{% url 'delete' task.id %}" class="btn btn-danger btn-fab btn-round"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </div>

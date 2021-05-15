@@ -13,3 +13,8 @@ class CreateUserForm(UserCreationForm):
 class AddForm(forms.Form):
     title = forms.CharField(max_length=120)
     msg = forms.CharField(widget=forms.Textarea)
+
+class EditForm(forms.Form):
+    title = forms.CharField(max_length=120)
+    msg = forms.CharField(widget=forms.Textarea)
+    status = forms.BooleanField()

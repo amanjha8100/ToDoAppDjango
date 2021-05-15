@@ -26,6 +26,9 @@
     pointer-events: none;
     color: #aaa;
 }
+.flex-gap{
+  gap:12px;
+}
 </style>
 {% endblock %}
 
@@ -55,9 +58,14 @@
                   <div class="card">
                     <div class="card-header" id="headingOne">
                       <h2 class="mb-0">
-                        <button class="d-flex align-items-center justify-content-between btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          <a href="{% url 'detail' task.id %}" style="color: #000; text-decoration: none;">{{task.title}}</a>
-                          <i class="fa" aria-hidden="true"></i>
+                        <button class="d-flex flex-gap align-items-center justify-content-between btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <a href="{% url 'detail' task.id %}" style="color: #000; text-decoration: none;" class="mr-auto">{{task.title}}</a>
+                          {% if task.status %}
+                          <span class="badge badge-pill badge-danger p-2 px-3">Completed</span>
+                          {% else %}
+                          <span class="badge badge-pill badge-success p-2 px-3">Working</span>
+                          {% endif %}
+                          <i class="fa" aria-hidden="true" class="p-2"></i>
                         </button>
                       </h2>
                     </div>
