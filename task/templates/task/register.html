@@ -83,24 +83,44 @@
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
 							{{form.username}}
+							{% for err in form.username.errors %}
+							<div class="alert alert-danger" role="alert">
+								{{err}}
+							</div>
+							{% endfor %}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
 							</div>
 							{{form.email}}
+							{% for err in form.email.errors %}
+							<div class="alert alert-danger pt-2" role="alert">
+								{{err}}
+							</div>
+							{% endfor %}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							{{form.password1}}
+							{% for err in form.password1.errors %}
+							<div class="alert alert-danger" role="alert">
+								{{err}}
+							</div>
+							{% endfor %}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							{{form.password2}}
+							{% for err in form.password2.errors %}
+							<div class="alert alert-danger" role="alert">
+								{{err}}
+							</div>
+							{% endfor %}
 						</div>
 
 				   		<div class="d-flex justify-content-center mt-3 login_container">
