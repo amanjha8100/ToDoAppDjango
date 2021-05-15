@@ -17,4 +17,4 @@ class AddForm(forms.Form):
 class EditForm(forms.Form):
     title = forms.CharField(max_length=120)
     msg = forms.CharField(widget=forms.Textarea)
-    status = forms.BooleanField()
+    status = forms.BooleanField(initial=False,required=False)

@@ -13,4 +13,4 @@ class toDo(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['status']
+        ordering = ['status','-pk']
