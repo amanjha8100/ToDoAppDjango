@@ -69,8 +69,9 @@
                           </div>
                     </form>
                 </div>
+                {% for task in tasks %}
                 <div id="accordion" class="myaccordion w-100 text-center py-4 px-1 px-md-4">
-                    {% for task in tasks %}
+                    
                   <div class="card">
                     <div class="card-header" id="headingOne">
                       <h2 class="mb-0">
@@ -85,10 +86,9 @@
                           <p>{{task.description}}</p>
                       </div>
                     </div>
-                  </div>
-                  {% endfor %}
-                  
+                  </div> 
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
