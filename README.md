@@ -16,13 +16,19 @@ Django , Bootstrap, CSS, HTML, Javascript, Jquery.
 
 ## Screenshot 
 
+### Home Page
 ![Index-Page](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Home.PNG?raw=true)
 
-![Detail](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Login.PNG?raw=true)
+### Detail page
+![Detail](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/detail.PNG?raw=true)
 
-![Login](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Register.PNG?raw=true)
+### Login Page
+![login](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Login.PNG?raw=true)
 
-![Register](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/detail.PNG?raw=true)
+### Register Page
+![register](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Register.PNG?raw=true)
+
+
 
 
 
