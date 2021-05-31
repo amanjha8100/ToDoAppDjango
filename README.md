@@ -16,13 +16,13 @@ Django , Bootstrap, CSS, HTML, Javascript, Jquery.
 
 ## Screenshot 
 
-![Index-Page](https://github.com/amanjha8100/ToDoAppDjango/blob/main/relative/ss/Home.PNG?raw=true)
+![Index-Page](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Home.PNG?raw=true)
 
-![Detail]()
+![Detail](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Login.PNG?raw=true)
 
-![Login](/relative/ss/Login.PNG?raw=true "Home")
+![Login](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Register.PNG?raw=true)
 
-![Register](/relative/ss/Register.PNG?raw=true "Home")
+![Register](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/detail.PNG?raw=true)
 
 
 
