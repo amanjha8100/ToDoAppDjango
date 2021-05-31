@@ -44,8 +44,8 @@
                         <li class="nav-item"><a href="{% url 'index' %}" class="nav-link icon d-flex align-items-center"><i>Home</i><span class="d-lg-none ml-2"></span></a></li>
                       <!-- <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-twitter"></i><span class="d-lg-none ml-2">Twitter</span></a></li> -->
                       <!-- <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-instagram"></i><span class="d-lg-none ml-2">Instagram</span></a></li> -->
-                      <li class="nav-item"><a href="{% url 'add' %}" class="nav-link icon d-flex align-items-center"><i class="ion-ios-add mr-2"></i> Add</a></li>
                       {% if user.is_authenticated %}
+                      <li class="nav-item"><a href="{% url 'add' %}" class="nav-link icon d-flex align-items-center"><i class="ion-ios-add mr-2"></i> Add</a></li>
                       <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link icon d-flex align-items-center"><i class="ion-ios-document mr-2"></i> Logout</a></li>
                       {% else %}
                       <li class="nav-item"><a href="{% url 'login' %}" class="nav-link icon d-flex align-items-center"><i class="ion-ios-document mr-2"></i> Login</a></li>
